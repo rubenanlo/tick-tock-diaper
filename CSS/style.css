@@ -95,14 +95,95 @@ hmtl {
             font-family: 'Jabore', sans-serif;
             line-height: 10vw;            
         }
+        
+        /* Animation for scoring everytime the player colides with target  */
 
-        @keyframes score {
-            from {top: 32vw;}
-            to {top: 0vw;}
-          }
-          
+        @-webkit-keyframes backOutUp {
+        0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        }
+        
+        20% {
+        -webkit-transform: translateY(0px) scale(0.7);
+        transform: translateY(0px) scale(0.7);
+        opacity: 0.7;
+        }
+        
+        100% {
+        -webkit-transform: translateY(-700px) scale(0.7);
+        transform: translateY(-700px) scale(0.7);
+        opacity: 0.7;
+        }
+        }
+        @keyframes backOutUp {
+        0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        }
+        
+        20% {
+        -webkit-transform: translateY(0px) scale(0.7);
+        transform: translateY(0px) scale(0.7);
+        opacity: 0.7;
+        }
+        
+        100% {
+        -webkit-transform: translateY(-700px) scale(0.7);
+        transform: translateY(-700px) scale(0.7);
+        opacity: 0.7;
+        }
+        }
+        .animate__backOutUp {
+        -webkit-animation-name: backOutUp;
+        animation-name: backOutUp;
+        }
+        animation-duration: 2s;
+        -webkit-animation-duration: 2s;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+        /* Bouncing entrances  */
 
+        /* Animation for score diaperize button */
 
-
-
-
+        @-webkit-keyframes zoomOut {
+        from {
+        opacity: 1;
+        }
+        
+        50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+        }
+        
+        to {
+        opacity: 0;
+        }
+        }
+        @keyframes zoomOut {
+        from {
+        opacity: 1;
+        }
+        
+        50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+        }
+        
+        to {
+        opacity: 0;
+        }
+        }
+        .animate__zoomOut {
+        -webkit-animation-name: zoomOut;
+        animation-name: zoomOut;
+        animation-duration: 2s;
+        -webkit-animation-duration: 2s;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+        }
+        
