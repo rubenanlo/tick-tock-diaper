@@ -1,0 +1,108 @@
+@import url('https://fonts.cdnfonts.com/css/luna-2');
+@import url('https://fonts.cdnfonts.com/css/jabore');
+
+hmtl {
+    padding: 0;
+    margin: 0;
+}
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        background-color: #FFFBF7;
+    }
+
+        .header {
+            display: flex;
+            justify-content: center;       
+            margin: 5% 10% 0% 10%;
+            border-bottom: solid grey 1px;
+        }
+
+        .header img {
+            height: 100px;
+        }
+
+        .header h1{
+            text-align: center;
+            font-family: 'Luna', sans-serif;
+            padding-bottom: 2.5%;
+            font-size: 40px;
+        }
+
+        .instructions {
+            font-family: 'Jabore', sans-serif;
+            font-size: 2rem;
+            margin: 5vw 10vw;
+            line-height: 150%;
+        }
+
+        .subheader {
+            margin-bottom: 5%;
+        }
+
+        .start-button {
+            font-family: 'Luna', sans-serif;
+            font-size: 2vw;
+            padding: 2.5%;
+            margin: 5% 40% 0 40%;
+            background-color: #9FC9C7;
+            border-style: none;
+            border-radius: 10px;
+        }
+
+        footer {
+            display: flex;
+            align-content: space-between;
+            justify-content: space-between;
+            font-family: 'Jabore', sans-serif;
+            font-size: 1.5vw;
+            margin: 0 10vw 0 10vw;            
+        }
+
+        #board {
+            margin: 5vw;
+            min-width: 80vw;
+            min-height: 50vw;
+            border: solid grey 1px;
+            position: relative;
+            background-color: #D9E9E9;
+        }
+
+        #summaryTable {
+            margin: 5vw 25vw 5vw 25vw;
+            max-width: 50vw;
+            min-height: 60vw;
+            border: solid grey 1px;
+            border-radius: 10px;
+            background-color: #D9E9E9;
+        }
+        
+        #summaryTable h2 {
+            font-family: 'Luna', sans-serif;
+            text-align: center;
+            font-size: 3vw;
+        }
+
+        #summaryTable p, 
+        ul {
+            font-family: 'Jabore', sans-serif;
+            margin: 5vw;
+            font-size: 3vw;
+        }
+
+        #summaryTable ul li {
+            font-family: 'Jabore', sans-serif;
+            line-height: 10vw;            
+        }
+
+        @keyframes score {
+            from {top: 32vw;}
+            to {top: 0vw;}
+          }
+          
+
+
+
+
+

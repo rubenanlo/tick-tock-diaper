@@ -1,0 +1,29 @@
+Planning:
+_______________________
+
+Board:
+- update format of an existing div
+- start the game
+
+Player:
+- create an element with a class
+- set up initial position
+- move all directions 
+
+Obstacles:
+- create an element with a class
+- set up initial position
+- move all directions randomly
+
+Target:
+- make one obstacle fixed at some point in time
+- collision. once it collides, the obstacle dissapears.
+
+Bonus:
+- countdown once an obstacle is fixed
+- kill them all buttom ('diaperize') - once the player receives 100 points, the button should appear.
+- add a board with the summary of the game (points: 20 points per diaper, diaperize button gives 1000 points, 
+- when the target dissapears, update the board above.
+- add a cover with instructions and the start button
+- add a summary of the game once the countdown hits zero
+- add levels.
