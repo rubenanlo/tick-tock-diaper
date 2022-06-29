@@ -22,9 +22,9 @@ class Game {
         this.player.createPlayer();
         this.createMoving();
         
-        this.obstacleInterval = this.intervalObstacles();
+        this.intervalObstacles();
 
-        this.targetInterval = this.intervalTargets();
+        this.intervalTargets();
         
         setTimeout(() => {
             this.killThemAll = new killThemAll;
@@ -80,7 +80,7 @@ class Game {
                         this.targetArr.shift(target);
                         this.target.removeTarget();
                         this.points += 1000;
-                        // this.target.addScore();
+                        this.target.addScore();
                     }
             })
 
@@ -101,9 +101,13 @@ class Game {
             const obstacleElms = document.querySelectorAll('#obstacle-image');
             obstacleElms.forEach((obstacle) => obstacle.remove());            
             this.points += 1000000;
-            const btn = document.getElementById("kill");
+            // const btn = document.getElementById("kill");
             this.intervalObstacles;
-            btn.remove();           
+            btn.style.animation = 'zoomOut 1s';
+            this.target.addScoreDiaperize();
+            setTimeout(() => {
+                btn.remove();                
+            }, 1000);
 
         })
     }
@@ -200,13 +204,13 @@ class Obstacles {
     constructor () {
         this.positionY = Math.floor(Math.random()*40);
         this.positionX = Math.floor(Math.random()*78);
-        this.width = 10;
-        this.height = 10;
+        this.width = 8;
+        this.height = 8;
     }
 
     createObstacle() {
         this.obstacle = document.createElement('img')
-        this.obstacle.setAttribute("src", "./CSS/Images/baby_moving.png")
+        this.obstacle.setAttribute("src", "..//CSS/Images/baby-moving2.png")
         this.obstacle.id = 'obstacle-image';
         board.appendChild(this.obstacle);
 
@@ -271,15 +275,65 @@ class Target {
         this.target.remove();
     }
 
-    // addScore() {
-    //     this.score = document.createElement('img');
-    //     this.score.setAttribute('src','../CSS/Images/score.png');
-    //     this.score.id = "score";
-    //     board.appendChild(this.score);
-    //     this.score.style.animation = 'score 1s';
+    addScore() {
+        const scoreElm = document.createElement('img');
+        scoreElm.setAttribute('src','../CSS/Images/score.png');
+        scoreElm.id = "score";
+        board.appendChild(scoreElm);
+        scoreElm.style.animation = 'backOutUp 1s';
+        scoreElm.style.width = '5vw';
 
-    //     this.score.style.width = '2vw';
-    // }
+        console.log(scoreElm);
+        setTimeout(() => {
+            scoreElm.remove();            
+        }, 500);
+    }
+
+    addScoreDiaperize() {
+        const scoreElm1 = document.createElement('img');
+        const scoreElm2 = document.createElement('img');
+        const scoreElm3 = document.createElement('img');
+
+        scoreElm1.setAttribute('src','./CSS/Images/score.png');
+        scoreElm2.setAttribute('src','./CSS/Images/score.png');
+        scoreElm3.setAttribute('src','./CSS/Images/score.png');
+
+        scoreElm1.id = "scoreDiaperized";
+        scoreElm2.id = "scoreDiaperized";
+        scoreElm3.id = "scoreDiaperized";
+
+        board.appendChild(scoreElm1);
+        board.appendChild(scoreElm2);
+        board.appendChild(scoreElm3);
+
+        scoreElm1.style.animation = 'backOutUp 1s';
+        scoreElm2.style.animation = 'backOutUp 1s';
+        scoreElm3.style.animation = 'backOutUp 1s';
+
+        scoreElm1.style.position = 'absolute';
+        scoreElm2.style.position = 'absolute';
+        scoreElm3.style.position = 'absolute';
+
+        scoreElm1.style.left = '20vw';
+        scoreElm2.style.left = '22vw';
+        scoreElm3.style.left = '24vw';
+
+        scoreElm1.style.top = '10vw';
+        scoreElm2.style.top = '15vw';
+        scoreElm3.style.top = '20vw';
+
+        scoreElm1.style.width = '5vw';
+        scoreElm2.style.width = '5vw';
+        scoreElm3.style.width = '5vw';
+
+        setTimeout(() => {
+            scoreElm1.remove();
+            scoreElm2.remove();
+            scoreElm3.remove();
+        }, 500);
+    }
+
+
 
 }
 
@@ -293,7 +347,7 @@ class killThemAll {
         btn.style.width = '30vw';
         btn.style.height = '10vw';
         btn.style.left = '32vw';
-        btn.style.top = '32vw';
+        btn.style.top = '20vw';
         btn.innerText = 'DIAPERIZE!!';
         btn.style.fontSize = '2.5vw';
         btn.style.fontFamily = 'Luna, sans-serif';
@@ -302,6 +356,7 @@ class killThemAll {
         btn.style.backgroundColor = '#FFE0F2';
     }
 }
+
 
 const game = new Game;
 game.play();
