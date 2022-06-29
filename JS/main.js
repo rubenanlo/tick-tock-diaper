@@ -210,7 +210,7 @@ class Obstacles {
 
     createObstacle() {
         this.obstacle = document.createElement('img')
-        this.obstacle.setAttribute("src", "..//CSS/Images/baby-moving2.png")
+        this.obstacle.setAttribute("src", "./CSS/Images/baby-moving2.png")
         this.obstacle.id = 'obstacle-image';
         board.appendChild(this.obstacle);
 
@@ -277,7 +277,7 @@ class Target {
 
     addScore() {
         const scoreElm = document.createElement('img');
-        scoreElm.setAttribute('src','../CSS/Images/score.png');
+        scoreElm.setAttribute('src','./CSS/Images/score.png');
         scoreElm.id = "score";
         board.appendChild(scoreElm);
         scoreElm.style.animation = 'backOutUp 1s';
