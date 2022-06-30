@@ -7,11 +7,8 @@ class Game {
     constructor() {
         this.obstacleArr = [];
         this.targetArr = [];
-        this.time = 0;
-        this.obstacleInterval = null;
-        this.targetInterval = null;
+        this.time = 0; 
         this.points = 0;
-        this.killThemAll = null;
         this.rankTop = "Diaper expert!!!"
         this.rankMid = "Not too bad diaper-changer"
         this.rankLow = "Diaper what?"
@@ -22,10 +19,12 @@ class Game {
         this.player.createPlayer();
         this.createMoving();
         
-        this.intervalObstacles();
+        // this.intervalObstacles();
 
         this.intervalTargets();
         
+        this.updatingScore();
+
         setTimeout(() => {
             this.killThemAll = new killThemAll;
             this.killThemAll.addButton();
@@ -42,8 +41,9 @@ class Game {
                 this.obstacle.createObstacle();
             }
             this.time++;
+
             this.obstacleArr.forEach (element => {
-                element.randomMove();                
+                element.randomMove();
                 if(this.player.positionX < element.positionX + element.width &&
                     this.player.positionX + this.player.width > element.positionX &&
                     this.player.positionY < element.positionY + element.height &&
@@ -53,8 +53,15 @@ class Game {
                         },100); 
                 }
             });
-                            
         },500);
+
+        // setInterval(() => {
+        //     this.obstacleArr.forEach(()=>{
+        //         const obstacleElm = getElementById ("obstacle-img");
+        //         obstacleElm.remove();
+        //     })
+        // },10)
+
     }
 
     intervalTargets() {
@@ -81,6 +88,7 @@ class Game {
                         this.target.removeTarget();
                         this.points += 1000;
                         this.target.addScore();
+                        this.updatingScore();
                     }
             })
 
@@ -93,8 +101,6 @@ class Game {
         (document.getElementById('player-image') === null) ? //I added this if statement so that it does not return an error when the summary table shows up once the player colides with an obstacle.
         false :
         btn.addEventListener("click", () => {
-            clearInterval(this.obstacleInterval);
-            clearInterval(this.targetInterval);
             this.targetArr.forEach(target => {
                 this.targetArr.shift(target);
                 this.target.removeTarget();
@@ -133,8 +139,6 @@ class Game {
     
     endGameSummary(){
 
-        clearInterval(this.obstacleInterval);
-        clearInterval(this.targetInterval);
         const summary = document.createElement("section");
         board.replaceWith(summary);
         summary.id = 'summaryTable';
@@ -162,6 +166,40 @@ class Game {
 
     establishRank(){
         return this.points > 100000 ? this.rankTop : this.points > 10000 ? this.rankMid : this.rankLow;
+    }
+
+    updatingScore () {
+        document.querySelector(".score").innerText = `Score: ${this.points.toLocaleString()}`;
+
+    //     const counter = document.querySelector('.score');
+    //     const speed = 200;
+
+    //     const updateCount = () => {
+	// 	const target = +counter.getAttribute('data-target');
+	// 	const count = +counter.innerText;
+
+	// 	// Lower inc to slow and higher to slow
+	// 	const inc = target / speed;
+
+	// 	// console.log(inc);
+	// 	// console.log(count);
+
+	// 	// Check if target is reached
+	// 	if (count < target) {
+	// 		// Add inc to count and output in counter
+	// 		counter.innerText = count + inc;
+	// 		// Call function every ms
+	// 		setTimeout(updateCount, 1);
+	// 	} else {
+	// 		counter.innerText = target;
+	// 	}
+	// };
+
+	// updateCount();
+
+
+        
+
     }
 }
 
@@ -216,7 +254,7 @@ class Obstacles {
     createObstacle() {
         this.obstacle = document.createElement('img')
         this.obstacle.setAttribute("src", "./CSS/Images/crawling.png")
-        this.obstacle.id = 'obstacle-image';
+        this.obstacle.id = `obstacle-image`;
         board.appendChild(this.obstacle);
 
         this.obstacle.style.left = `${this.positionX}vw`;

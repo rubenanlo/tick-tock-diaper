@@ -49,6 +49,7 @@ hmtl {
             background-color: #9FC9C7;
             border-style: none;
             border-radius: 10px;
+            box-shadow: 1vw 1vw 0.4vw #999794;
         }
 
         footer {
@@ -67,6 +68,13 @@ hmtl {
             border: solid grey 1px;
             position: relative;
             background-color: #D9E9E9;
+        }
+
+        #board span {
+            position: absolute;
+            top: 51vw;
+            font-size: 3vw;
+            font-family: 'Jabore', sans-serif;
         }
 
         #summaryTable {
