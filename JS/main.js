@@ -194,14 +194,17 @@ class Player {
         this.positionY >= 30 ? 30 : this.positionY += 5;
         this.player.style.bottom = `${this.positionY}vw`;
     }
+
     moveDown(){
         this.positionY <= 0 ? 0 : this.positionY -= 5;
         this.player.style.bottom = `${this.positionY}vw`;
     }
+
     moveRight(){
         this.positionX >= 78 ? 78: this.positionX += 3;
         this.player.style.left = `${this.positionX}vw`;
     }
+
     moveLeft(){
         this.positionX <= 0 ? 0 : this.positionX -= 3;
         this.player.style.left = `${this.positionX}vw`;
@@ -233,14 +236,17 @@ class Obstacles {
         this.positionY >= 30 ? 30 : this.positionY += 1;
         this.obstacle.style.bottom = `${this.positionY}vw`;
     }
+
     moveDown(){
         this.positionY <= 0 ? 0 : this.positionY -= 1;
         this.obstacle.style.bottom = `${this.positionY}vw`;
     }
+
     moveRight(){
         this.positionX >= 78 ? 78: this.positionX += 1;
         this.obstacle.style.left = `${this.positionX}vw`;
     }
+
     moveLeft(){
         this.positionX <= 0 ? 0 : this.positionX -= 1;
         this.obstacle.style.left = `${this.positionX}vw`;
