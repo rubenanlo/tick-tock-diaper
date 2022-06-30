@@ -13,7 +13,7 @@ class Game {
         this.points = 0;
         this.killThemAll = null;
         this.rankTop = "Diaper expert!!!"
-        this.rankMid = "Not too bad diaper changer"
+        this.rankMid = "Not too bad diaper-changer"
         this.rankLow = "Diaper what?"
     }
 
@@ -22,9 +22,9 @@ class Game {
         this.player.createPlayer();
         this.createMoving();
         
-        this.intervalObstacles();
+        // this.intervalObstacles();
 
-        this.intervalTargets();
+        // this.intervalTargets();
         
         setTimeout(() => {
             this.killThemAll = new killThemAll;
@@ -50,7 +50,7 @@ class Game {
                     this.player.height + this.player.positionY > element.positionY){
                         setTimeout(() => {
                             this.endGameSummary()                            
-                        },500); 
+                        },100); 
                 }
             });
                             
@@ -90,6 +90,8 @@ class Game {
 
     killAll () {
         const btn = document.getElementById('kill');
+        (document.getElementById('player-image') === null) ? //I added this if statement so that it does not return an error when the summary table shows up once the player colides with an obstacle.
+        false :
         btn.addEventListener("click", () => {
             clearInterval(this.obstacleInterval);
             clearInterval(this.targetInterval);
@@ -100,15 +102,13 @@ class Game {
             this.obstacleArr=[];
             const obstacleElms = document.querySelectorAll('#obstacle-image');
             obstacleElms.forEach((obstacle) => obstacle.remove());            
-            this.points += 1000000;
-            // const btn = document.getElementById("kill");
+            this.points += 10000;
             this.intervalObstacles;
             btn.style.animation = 'zoomOut 1s';
             this.target.addScoreDiaperize();
             setTimeout(() => {
                 btn.remove();                
             }, 1000);
-
         })
     }
 
@@ -138,12 +138,13 @@ class Game {
         const summary = document.createElement("section");
         board.replaceWith(summary);
         summary.id = 'summaryTable';
-
+        
         const title = document.createElement("h2");
         const paragraph = document.createElement('p');
         const list = document.createElement('ul');
-        summary.append(title,paragraph,list);
-
+        const btnStartOver = document.createElement ('button');
+        summary.append(title,paragraph,list, btnStartOver);
+        
         const item1 = document.createElement('li');
         const item2 = document.createElement('li');
         list.append(item1, item2);
@@ -152,12 +153,16 @@ class Game {
         paragraph.innerText = `But hey, here is how you did:`;
         item1.innerText = `Points: ${this.points.toLocaleString()}`;
         item2.innerText = `Rank: ${this.establishRank()}`;
+        btnStartOver.innerText = `Start Over`;
+
+        btnStartOver.addEventListener('click', () => {
+            window.location.reload();
+        });
     }
 
     establishRank(){
         return this.points > 100000 ? this.rankTop : this.points > 10000 ? this.rankMid : this.rankLow;
     }
-
 }
 
 class Player {
@@ -246,7 +251,6 @@ class Obstacles {
         (i === 3) ? this.moveRight() : 
         0;
     }
-
 }
 
 class Target {
@@ -281,7 +285,7 @@ class Target {
         scoreElm.id = "score";
         board.appendChild(scoreElm);
         scoreElm.style.animation = 'backOutUp 1s';
-        scoreElm.style.width = '5vw';
+        scoreElm.style.width = '20vw';
 
         console.log(scoreElm);
         setTimeout(() => {
@@ -322,9 +326,9 @@ class Target {
         scoreElm2.style.top = '15vw';
         scoreElm3.style.top = '20vw';
 
-        scoreElm1.style.width = '5vw';
-        scoreElm2.style.width = '5vw';
-        scoreElm3.style.width = '5vw';
+        scoreElm1.style.width = '20vw';
+        scoreElm2.style.width = '20vw';
+        scoreElm3.style.width = '20vw';
 
         setTimeout(() => {
             scoreElm1.remove();
@@ -332,9 +336,6 @@ class Target {
             scoreElm3.remove();
         }, 500);
     }
-
-
-
 }
 
 class killThemAll {
@@ -352,11 +353,10 @@ class killThemAll {
         btn.style.fontSize = '2.5vw';
         btn.style.fontFamily = 'Luna, sans-serif';
         btn.style.borderRadius = '4vw';
-        btn.style.border = 'none';
+        // btn.style.border = 'none';
         btn.style.backgroundColor = '#FFE0F2';
     }
 }
-
 
 const game = new Game;
 game.play();

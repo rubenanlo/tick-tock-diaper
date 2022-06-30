@@ -1,6 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/luna-2');
 @import url('https://fonts.cdnfonts.com/css/jabore');
 
+.some-element {
+    overflow-anchor: none;
+}
+
 hmtl {
     padding: 0;
     margin: 0;
@@ -20,14 +24,14 @@ hmtl {
         }
 
         .header img {
-            height: 100px;
+            height: 10vw;
         }
 
         .header h1{
             text-align: center;
             font-family: 'Luna', sans-serif;
             padding-bottom: 2.5%;
-            font-size: 40px;
+            font-size: 4vw;
         }
 
         .instructions {
@@ -93,7 +97,22 @@ hmtl {
 
         #summaryTable ul li {
             font-family: 'Jabore', sans-serif;
-            line-height: 10vw;            
+            line-height: 5vw;            
+        }
+
+        #summaryTable button {
+            width: 20vw;
+            text-align: center;
+            height: 10vw;
+            font-family: 'Luna', sans-serif;
+            font-size: 2vw;
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+            border-radius: 1vw;
+            background-color: #F5FAF9;
+            box-shadow: 0.5vw 0.5vw 0.3vw #405050;
         }
         
         /* Animation for scoring everytime the player colides with target  */
