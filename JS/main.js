@@ -3,6 +3,8 @@ const board = document.getElementById("board");
 // const container = document.getElementById('container')
 // End of comment
 
+
+
 class Game {
     constructor() {
         this.obstacleArr = [];
@@ -30,7 +32,7 @@ class Game {
             this.killThemAll.addButton();
             this.killAll();
     
-        },10000);
+        },5000);
     }
 
     intervalObstacles() {
@@ -54,13 +56,6 @@ class Game {
                 }
             });
         },500);
-
-        // setInterval(() => {
-        //     this.obstacleArr.forEach(()=>{
-        //         const obstacleElm = getElementById ("obstacle-img");
-        //         obstacleElm.remove();
-        //     })
-        // },10)
 
     }
 
@@ -109,6 +104,7 @@ class Game {
             const obstacleElms = document.querySelectorAll('#obstacle-image');
             obstacleElms.forEach((obstacle) => obstacle.remove());            
             this.points += 10000;
+            this.updatingScore();
             this.intervalObstacles;
             btn.style.animation = 'zoomOut 1s';
             this.target.addScoreDiaperize();
@@ -170,43 +166,13 @@ class Game {
 
     updatingScore () {
         document.querySelector(".score").innerText = `Score: ${this.points.toLocaleString()}`;
-
-    //     const counter = document.querySelector('.score');
-    //     const speed = 200;
-
-    //     const updateCount = () => {
-	// 	const target = +counter.getAttribute('data-target');
-	// 	const count = +counter.innerText;
-
-	// 	// Lower inc to slow and higher to slow
-	// 	const inc = target / speed;
-
-	// 	// console.log(inc);
-	// 	// console.log(count);
-
-	// 	// Check if target is reached
-	// 	if (count < target) {
-	// 		// Add inc to count and output in counter
-	// 		counter.innerText = count + inc;
-	// 		// Call function every ms
-	// 		setTimeout(updateCount, 1);
-	// 	} else {
-	// 		counter.innerText = target;
-	// 	}
-	// };
-
-	// updateCount();
-
-
-        
-
     }
 }
 
 class Player {
     constructor () {
         this.positionX = 0;
-        this.positionY = 40;
+        this.positionY = 25;
         this.height = 10;
         this.width = 10;
     }
@@ -225,7 +191,7 @@ class Player {
     }
 
     moveUp(){
-        this.positionY >= 40 ? 40 : this.positionY += 5;
+        this.positionY >= 30 ? 30 : this.positionY += 5;
         this.player.style.bottom = `${this.positionY}vw`;
     }
     moveDown(){
@@ -240,12 +206,11 @@ class Player {
         this.positionX <= 0 ? 0 : this.positionX -= 3;
         this.player.style.left = `${this.positionX}vw`;
     }
-
 }
 
 class Obstacles {
     constructor () {
-        this.positionY = Math.floor(Math.random()*40);
+        this.positionY = Math.floor(Math.random()*30);
         this.positionX = Math.floor(Math.random()*78);
         this.width = 8;
         this.height = 8;
@@ -265,7 +230,7 @@ class Obstacles {
     }
 
     moveUp(){
-        this.positionY >= 40 ? 40 : this.positionY += 1;
+        this.positionY >= 30 ? 30 : this.positionY += 1;
         this.obstacle.style.bottom = `${this.positionY}vw`;
     }
     moveDown(){
@@ -324,8 +289,6 @@ class Target {
         board.appendChild(scoreElm);
         scoreElm.style.animation = 'backOutUp 1s';
         scoreElm.style.width = '20vw';
-
-        console.log(scoreElm);
         setTimeout(() => {
             scoreElm.remove();            
         }, 500);
@@ -356,9 +319,9 @@ class Target {
         scoreElm2.style.position = 'absolute';
         scoreElm3.style.position = 'absolute';
 
-        scoreElm1.style.left = '20vw';
-        scoreElm2.style.left = '22vw';
-        scoreElm3.style.left = '24vw';
+        scoreElm1.style.left = '0vw';
+        scoreElm2.style.left = '2vw';
+        scoreElm3.style.left = '4vw';
 
         scoreElm1.style.top = '10vw';
         scoreElm2.style.top = '15vw';
@@ -383,16 +346,17 @@ class killThemAll {
         btn.id = 'kill';
         board.appendChild(btn);
         btn.style.position = 'absolute';
-        btn.style.width = '30vw';
-        btn.style.height = '10vw';
-        btn.style.left = '32vw';
-        btn.style.top = '20vw';
-        btn.innerText = 'DIAPERIZE!!';
+        btn.style.width = '25vw';
+        btn.style.height = '8vw';
+        btn.style.left = '30vw';
+        btn.style.top = '12vw';
+        btn.innerText = 'Diaperize!!';
         btn.style.fontSize = '2.5vw';
         btn.style.fontFamily = 'Luna, sans-serif';
-        btn.style.borderRadius = '4vw';
+        btn.style.borderRadius = '2vw';
         btn.style.backgroundColor = '#FFE0F2';
         btn.style.boxShadow = '1vw 1vw 0.4vw #405050';
+        btn.style.animation = 'zoomIn 0.5s';
     }
 }
 
