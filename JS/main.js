@@ -22,9 +22,9 @@ class Game {
         this.player.createPlayer();
         this.createMoving();
         
-        // this.intervalObstacles();
+        this.intervalObstacles();
 
-        // this.intervalTargets();
+        this.intervalTargets();
         
         setTimeout(() => {
             this.killThemAll = new killThemAll;
@@ -215,7 +215,7 @@ class Obstacles {
 
     createObstacle() {
         this.obstacle = document.createElement('img')
-        this.obstacle.setAttribute("src", "./CSS/Images/baby-moving2.png")
+        this.obstacle.setAttribute("src", "./CSS/Images/crawling.png")
         this.obstacle.id = 'obstacle-image';
         board.appendChild(this.obstacle);
 
@@ -353,8 +353,8 @@ class killThemAll {
         btn.style.fontSize = '2.5vw';
         btn.style.fontFamily = 'Luna, sans-serif';
         btn.style.borderRadius = '4vw';
-        // btn.style.border = 'none';
         btn.style.backgroundColor = '#FFE0F2';
+        btn.style.boxShadow = '1vw 1vw 0.4vw #405050';
     }
 }
 
