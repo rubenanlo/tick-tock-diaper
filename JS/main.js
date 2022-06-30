@@ -19,7 +19,7 @@ class Game {
         this.player.createPlayer();
         this.createMoving();
         
-        // this.intervalObstacles();
+        this.intervalObstacles();
 
         this.intervalTargets();
         
