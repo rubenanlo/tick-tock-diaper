@@ -1,8 +1,6 @@
 // Global scope for variables used in multiple places in the code:
 const board = document.getElementById("board");
-// const container = document.getElementById('container')
 // End of comment
-
 
 
 class Game {
@@ -32,31 +30,30 @@ class Game {
             this.killThemAll.addButton();
             this.killAll();
     
-        },5000);
+        },10000);
     }
 
     intervalObstacles() {
         setInterval(() => {
             if (this.time % 10 === 0) {
                 this.obstacle = new Obstacles();
-                this.obstacleArr.push(this.obstacle);            
+                this.obstacleArr.push(this.obstacle);
                 this.obstacle.createObstacle();
             }
             this.time++;
 
             this.obstacleArr.forEach (element => {
                 element.randomMove();
-                if(this.player.positionX < element.positionX + element.width &&
-                    this.player.positionX + this.player.width > element.positionX &&
-                    this.player.positionY < element.positionY + element.height &&
-                    this.player.height + this.player.positionY > element.positionY){
+                if(this.player.positionX < element.positionX + element.width-1.5 &&
+                    this.player.positionX + this.player.width-1.4 > element.positionX &&
+                    this.player.positionY < element.positionY + element.height-1.7 &&
+                    this.player.height + this.player.positionY-1.4 > element.positionY){
                         setTimeout(() => {
                             this.endGameSummary()                            
                         },100); 
                 }
             });
-        },500);
-
+        },800);
     }
 
     intervalTargets() {
@@ -125,9 +122,11 @@ class Game {
                     break;
                 case "ArrowLeft":
                     this.player.moveLeft();
+                    document.getElementById('player-image').style.transform = 'scaleX(-1)';
                     break;
                 case "ArrowRight":
                     this.player.moveRight();
+                    document.getElementById('player-image').style.transform = null;
                     break;
             }
         })

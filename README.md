@@ -1,6 +1,26 @@
 # Tick tock diaper
 
-## Instructions
+
+### Introduction
+
+This is a collision type of game that combines HTML, CSS and Javascript. The main characteristics of the game are the following:
+
+[] Webpage responsiveness through the use of Flexbox and other CSS styles.
+
+[] Kill them all type of button
+
+[] Several animations
+
+[] Score tracking while playing
+
+[] Summary of the game (incl., score and rank) once the game is over.
+
+[] Link to personal profile
+
+[] The use of classes (incl., constructors and methods), arrays, ternary operators, conditional statements (e.g., if, switch), DOM manipulation, among other technical related aspects.
+
+
+### Instructions
 
 Lets face it: babies poop. As a parent you cannot run away from it. Practice makes perfection, so let's get ready. 
 
@@ -11,15 +31,14 @@ After changing some diapers, you will develop a hidden power...  Change as much 
 May the diaper be with you.
 
 
-### Further Improvements
 
-[] To remove obstacles from the baord after they are created to improve playability
+### Further updates
 
-[] To avoid colision when the obstacles shows up in the same position as the player
+[] To remove obstacles from the board after they are created to improve playability.
 
-[] To improve the responsiveness of the game, so that the window doesn't scroll down when playing
+[] To avoid colision when the obstacles shows up in the same position as the player.
 
-[] Player flips when going left or right.
+[] To increase the time out for the 'diaperize' button.
 
 
 ### DEMO 
