@@ -17,7 +17,7 @@ This is a collision type of game that combines HTML, CSS and Javascript. The mai
 
 [] Link to personal profile
 
-[] The use of classes (incl., constructors and methods), arrays, ternary operators, conditional statements (e.g., if, switch), DOM manipulation, among other technical related aspects.
+[] The use of OOP, arrays, ternary operators, conditional statements (e.g., if, switch), loops, DOM manipulation, among other technical related aspects.
 
 
 ### Instructions
