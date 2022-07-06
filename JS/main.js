@@ -25,12 +25,6 @@ class Game {
         
         this.updatingScore();
 
-        setTimeout(() => {
-            this.killThemAll = new killThemAll;
-            this.killThemAll.addButton();
-            this.killAll();
-    
-        },10000);
     }
 
     intervalObstacles() {
@@ -64,7 +58,7 @@ class Game {
                 this.targetArr.push (this.target);
             }
 
-            if (this.time % 100 === 0 && this.targetArr.length > 0) {
+            if (this.time % this.points === 0 && this.targetArr.length > 0) {
                 this.targetArr.forEach (target => {
                     this.targetArr.shift(target);
                     target.removeTarget();
@@ -78,9 +72,17 @@ class Game {
                     this.player.height + this.player.positionY > target.positionY){
                         this.targetArr.shift(target);
                         this.target.removeTarget();
-                        this.points += 1000;
+                        this.points += 100;
                         this.target.addScore();
                         this.updatingScore();
+                        if(this.points%300 === 0) {
+                            this.killThemAll = new killThemAll;
+                            this.killThemAll.addButton();
+                            this.killAll();
+                            setTimeout(() => {
+                                this.killThemAll.removeDiaperize();
+                            },1500);
+                        }
                     }
             })
 
@@ -100,7 +102,7 @@ class Game {
             this.obstacleArr=[];
             const obstacleElms = document.querySelectorAll('#obstacle-image');
             obstacleElms.forEach((obstacle) => obstacle.remove());            
-            this.points += 10000;
+            this.points += 300;
             this.updatingScore();
             this.intervalObstacles;
             btn.style.animation = 'zoomOut 1s';
@@ -129,7 +131,7 @@ class Game {
                     document.getElementById('player-image').style.transform = null;
                     break;
             }
-        })
+        });
     }
     
     endGameSummary(){
@@ -160,7 +162,7 @@ class Game {
     }
 
     establishRank(){
-        return this.points > 100000 ? this.rankTop : this.points > 10000 ? this.rankMid : this.rankLow;
+        return this.points > 2000 ? this.rankTop : this.points > 1000 ? this.rankMid : this.rankLow;
     }
 
     updatingScore () {
@@ -250,6 +252,7 @@ class Obstacles {
         this.positionX <= 0 ? 0 : this.positionX -= 1;
         this.obstacle.style.left = `${this.positionX}vw`;
     }
+
 
     randomMove () {
         let i = Math.floor(Math.random()*4);
@@ -347,21 +350,25 @@ class Target {
 class killThemAll {
 
     addButton () {
-        const btn = document.createElement('button');
-        btn.id = 'kill';
-        board.appendChild(btn);
-        btn.style.position = 'absolute';
-        btn.style.width = '25vw';
-        btn.style.height = '8vw';
-        btn.style.left = '30vw';
-        btn.style.top = '12vw';
-        btn.innerText = 'Diaperize!!';
-        btn.style.fontSize = '2.5vw';
-        btn.style.fontFamily = 'Luna, sans-serif';
-        btn.style.borderRadius = '2vw';
-        btn.style.backgroundColor = '#FFE0F2';
-        btn.style.boxShadow = '1vw 1vw 0.4vw #405050';
-        btn.style.animation = 'zoomIn 0.5s';
+        this.killThemAll = document.createElement('button');
+        this.killThemAll.id = 'kill';
+        board.appendChild(this.killThemAll);
+        this.killThemAll.style.position = 'absolute';
+        this.killThemAll.style.width = '25vw';
+        this.killThemAll.style.height = '8vw';
+        this.killThemAll.style.left = '30vw';
+        this.killThemAll.style.top = '12vw';
+        this.killThemAll.innerText = 'Diaperize!!';
+        this.killThemAll.style.fontSize = '2.5vw';
+        this.killThemAll.style.fontFamily = 'Luna, sans-serif';
+        this.killThemAll.style.borderRadius = '2vw';
+        this.killThemAll.style.backgroundColor = '#FFE0F2';
+        this.killThemAll.style.boxShadow = '1vw 1vw 0.4vw #405050';
+        this.killThemAll.style.animation = 'zoomIn 0.5s';
+    }
+
+    removeDiaperize(){
+        this.killThemAll.remove();
     }
 }
 
